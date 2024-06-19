@@ -19,12 +19,12 @@ const wallets = [
     wallet: {
       url: "https://wallet.intmax.io/",
       name: "INTMAX Wallet",
-      iconUrl: "/src/assets/logo.png",
+      iconUrl: "/logo.png",
     },
     metadata: {
       name: "Rainbow-Kit Demo",
       description: "Rainbow-Kit Demo",
-      icons: ["/src/assets/logo.png"],
+      icons: ["logo.png"],
     },
   }),
 ];
