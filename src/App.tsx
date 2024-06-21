@@ -1,9 +1,12 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useSignMessage } from 'wagmi';
 
 function App() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage() as any;
 
   return (
     <>
@@ -19,8 +22,20 @@ function App() {
       <div className="card">
         <ConnectButton />
       </div>
+
+      <div className="card">
+        <div className="button-container">
+          <button disabled={isLoading} onClick={() => signMessage({
+            message: 'gm wagmi frens',
+          })}>
+            Sign message
+          </button>
+          {isSuccess && <div>Signature: {data}</div>}
+          {isError && <div>Error signing message, please connect wallet first!</div>}
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
